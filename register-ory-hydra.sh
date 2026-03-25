@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# docker compose -f docker-compose-ory-hydra.yml up -d
+# docker compose -f docker-compose-ory-hydra.yml ps
+# docker compose -f docker-compose-ory-hydra.yml down -v
+
 # Register the client and capture JSON
-code_client=$(docker compose -f quickstart.yml exec -T hydra \
+code_client=$(docker compose -f docker-compose-ory-hydra.yml exec -T hydra \
     hydra create client \
     --endpoint http://127.0.0.1:4445 \
     --grant-type authorization_code,refresh_token \
