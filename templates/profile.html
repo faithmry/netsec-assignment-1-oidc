@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - OIDC Client App{% endblock %}
+
+{% block styles %}
+<style>
+    .jwt-decoder {
+        max-height: 300px;
+        overflow-y: auto;
+        font-family: 'Monaco', 'Courier New', monospace;
+        word-break: break-all;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    dt { font-weight: bold; color: #444; margin-top: 10px; }
+    dd { margin-bottom: 10px; color: #666; }
+    .security-note { font-style: italic; color: #2c3e50; background: #ecf0f1; padding: 10px; border-left: 5px solid #34495e; }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>User Profile</h2>
+<p class="security-note">🛡️ Token Signature Verified against OIDC Provider JWKS.</p>
+
+<div class="user-info">
+    <dl>
+        <dt>Subject (Unique ID/Email)</dt>
+        <dd>{{ user_info.sub }}</dd>
+
+        {% if user_info.email %}
+            <dt>Email</dt>
+            <dd>{{ user_info.email }}</dd>
+        {% endif %}
+
+        {% if user_info.name or user_info.preferred_username %}
+            <dt>Display Name / Username</dt>
+            <dd>{{ user_info.name or user_info.preferred_username }}</dd>
+        {% endif %}
+
+        <dt>Issuer (iss)</dt>
+        <dd><code>{{ user_info.iss }}</code></dd>
+        
+        <dt>Audience (aud)</dt>
+        <dd><code>{{ user_info.aud }}</code></dd>
+    </dl>
+</div>
+
+<hr>
+
+<h3 style="margin-top: 2rem; text-align: center; color: #333;">ID Token (JWT)</h3>
+<div class="token-info">
+    <details>
+        <summary style="cursor: pointer; font-weight: bold; color: #667eea;">🔍 Click to expand raw encoded token</summary>
+        <div class="jwt-decoder" style="margin-top: 0.5rem;">
+            {{ id_token }}
+        </div>
+    </details>
+</div>
+
+<div style="margin-top: 2rem;">
+    <a href="/logout" class="btn secondary">Logout</a>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Home - OIDC Client App{% endblock %}
+
+{% block content %}
+<h2>Welcome to OIDC Client App</h2>
+<p>This is a minimalist OpenID Connect Relying Party (Client) application built with Flask.</p>
+<p>Click the button below to login with your OIDC provider (Ory Hydra or Keycloak).</p>
+<a href="/login" class="btn">🔑 Login with OIDC</a>
+{% endblock %}
