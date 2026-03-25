@@ -5,6 +5,18 @@
 {% block content %}
 <h2>Welcome to OIDC Client App</h2>
 <p>This is a minimalist OpenID Connect Relying Party (Client) application built with Flask.</p>
-<p>Click the button below to login with your OIDC provider (Ory Hydra or Keycloak).</p>
-<a href="/login" class="btn">🔑 Login with OIDC</a>
+<p>Select an identity provider to start login.</p>
+
+{% for provider in providers %}
+<a href="{{ url_for('login_provider', provider=provider) }}" class="btn" style="margin: 0.25rem;">
+	🔑 Login with {{ provider|capitalize }}
+</a>
+{% endfor %}
+
+<div class="token-info" style="margin-top: 1.25rem; text-align: left;">
+	<strong>Callback URI to register in IdP client:</strong><br>
+	<code>{{ callback_uri }}</code>
+</div>
+
+<p style="margin-top: 0.75rem;">Default provider: <strong>{{ default_provider|capitalize }}</strong></p>
 {% endblock %}
