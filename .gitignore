@@ -2,6 +2,7 @@
 *.pem
 *.key
 certs/
+.flask_sessions/
 
 __pycache__/
 *.py[cod]

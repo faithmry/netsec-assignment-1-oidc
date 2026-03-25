@@ -22,6 +22,7 @@
 {% block content %}
 <h2>User Profile</h2>
 <p class="security-note">🛡️ Token Signature Verified against OIDC Provider JWKS.</p>
+<p><strong>Authenticated via:</strong> {{ auth_provider|capitalize }}</p>
 
 <div class="user-info">
     <dl>
