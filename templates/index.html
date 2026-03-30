@@ -4,12 +4,11 @@
 
 {% block content %}
 <h2>Welcome to OIDC Client App</h2>
-<p>This is a minimalist OpenID Connect Relying Party (Client) application built with Flask.</p>
-<p>Select an identity provider to start login.</p>
+<p>Please choose an identity provider to start login.</p>
 
 {% for provider in providers %}
 <a href="{{ url_for('login_provider', provider=provider) }}" class="btn" style="margin: 0.25rem;">
-	🔑 Login with {{ provider|capitalize }}
+	Login with {{ provider|capitalize }}
 </a>
 {% endfor %}
 
@@ -17,6 +16,4 @@
 	<strong>Callback URI to register in IdP client:</strong><br>
 	<code>{{ callback_uri }}</code>
 </div>
-
-<p style="margin-top: 0.75rem;">Default provider: <strong>{{ default_provider|capitalize }}</strong></p>
 {% endblock %}
