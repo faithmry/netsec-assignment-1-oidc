@@ -21,7 +21,7 @@
 
 {% block content %}
 <h2>User Profile</h2>
-<p class="security-note">🛡️ Token Signature Verified against OIDC Provider JWKS.</p>
+<p class="security-note">Token Signature Verified against OIDC Provider JWKS</p>
 <p><strong>Authenticated via:</strong> {{ auth_provider|capitalize }}</p>
 
 <div class="user-info">
@@ -52,7 +52,7 @@
 <h3 style="margin-top: 2rem; text-align: center; color: #333;">ID Token (JWT)</h3>
 <div class="token-info">
     <details>
-        <summary style="cursor: pointer; font-weight: bold; color: #667eea;">🔍 Click to expand raw encoded token</summary>
+        <summary style="cursor: pointer; font-weight: bold; color: #667eea;">🔍 Click here to expand raw encoded token</summary>
         <div class="jwt-decoder" style="margin-top: 0.5rem;">
             {{ id_token }}
         </div>
